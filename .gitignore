@@ -1,3 +1,5 @@
+.dccache
+
 # Logs
 logs
 *.log
@@ -53,6 +55,18 @@ spigot.yml
 server.properties
 eula.txt
 crash-reports/
+data/*
+jre/*
+logs/*
+logs.txt
+logs.txt.gz
+logs.txt.gz.part
+logs.txt.gz.part.1
+logs.txt.gz.part.2
+logs.txt.gz.part.3
+logs.txt.gz.part.4
+server.properties.save
+
 
 # BedRock
 config.yaml
@@ -69,5 +83,55 @@ paper*
 ViPiLand*/*
 AFreshStart*/*
 backups*/*
+
+# Java
+java*
+jdk*
+openjdk*
+
+# Maven
+mvnw
+mvnw.cmd
+pom.xml
+
+# Gradle
+gradlew
+gradlew.bat
+build.gradle
+settings.gradle
+
+# Yarn
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+bun.lockb
+
+backups/*
+build/*
+.DS_Store
+._.DS_Store
+._*
+
+#Mincraft Server files
+minecraft_server*
+*.jar
+*.jar.sha1
+*.jar.sha256
+*.jar.sha512
+*.jar.sha512.part
+*.jar.sha512.part.1
+*.jar.sha512.part.2
+*.jar.sha512.part.3
+*.jar.sha512.part.4
+.env.example
+.env
+.minecraft_version
+
+SetupMinecraft.sh
+fixpermissions.sh
+restart.sh
+stop.sh
 start.sh
-start_screen.sh
+update.sh
+v1.*
+server-icon.png
