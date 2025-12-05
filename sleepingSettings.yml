@@ -3,7 +3,7 @@
 
 # The name of your server.
 # You can specify (https://motd.gg) by using the `§` prefix.
-serverName: "Sleeping: Go to https://server.r-nold.eu to wake up..."
+serverName: "Sleeping: Go to https://arnold.host to wake up..."
 
 # The server name to display in Minecraft, defaults to serverName if not set
 # serverMOTD: "SleepingServer, waiting for his prince... [MOTD]"
