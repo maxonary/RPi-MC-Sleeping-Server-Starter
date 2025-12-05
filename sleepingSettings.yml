@@ -3,7 +3,7 @@
 
 # The name of your server.
 # You can specify (https://motd.gg) by using the `§` prefix.
-serverName: "SleepingServer, waiting for his prince..."
+serverName: "Sleeping: Go to https://server.r-nold.eu to wake up..."
 
 # The server name to display in Minecraft, defaults to serverName if not set
 # serverMOTD: "SleepingServer, waiting for his prince... [MOTD]"
@@ -17,13 +17,13 @@ serverName: "SleepingServer, waiting for his prince..."
 serverPort: 25565
 
 # The port of your Bedrock Edition server (0 to disable or add `#`) 
-#bedrockPort: 19132
+bedrockPort: 19132
 
 # Message shown when the server is off and someone is trying to connect
 loginMessage: "...Waking server up, come back in a minute..."
 
 # Like in the server.properties, to check the licence of player or not.
-serverOnlineMode: false
+serverOnlineMode: true
 
 # Use legacy "login" method
 # https://github.com/PrismarineJS/node-minecraft-protocol/issues/1279#issuecomment-1878866611
@@ -33,10 +33,10 @@ serverOnlineMode: false
 maxPlayers: 20
 
 # Web page port
-#webPort: 8080
+webPort: 5000
 
 # Stop the web-server when minecraft starts 
-#webStopOnStart: true
+webStopOnStart: false
 
 # You can specify an absolute path to serve instead or an url to redirect to.
 # true or false to enable, by default it will serve ./plugins/dynmap/web/
@@ -51,7 +51,7 @@ startMinecraft: true
 
 # Server start command
 # paper.jar or whatever flavor you like
-minecraftCommand: "java -jar paper.jar --nogui"
+minecraftCommand: "/home/pi/minecraft/jre/bin/java -DPaper.IgnoreJavaVersion=true -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -jar -Xms400M -Xmx6500M /home/pi/minecraft/paperclip.jar" # or paper.jar or whatever flavor you like
 
 # Set a custom Working Directory for the server (path to minecraft server folder)
 # Edit this setting only if you know what you are doing!
@@ -67,7 +67,7 @@ minecraftCommand: "java -jar paper.jar --nogui"
 restartDelay: 5000
 
 # Prevent the user to stop the server (trought web-server or cli).
-#preventStop: false
+preventStop: true
 
 # Discord WebHook
 # https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks
@@ -84,7 +84,7 @@ restartDelay: 5000
 
 # Use Minecraft `whitelist.json` instead of the `whiteListedNames` property.
 # Checks both username and UUID
-useWhitelistFile: false
+useWhitelistFile: true
 
 # Prevent connections from those addresses to wake up the server
 # example ["149.102.143.151", "132.145.71.44", "45.128.232.206", "193.35.18."]
@@ -92,11 +92,11 @@ useWhitelistFile: false
 
 # Use Minecraft `banned-ips.json` and `banned-players.json` to prevent players from waking up the server.
 # Can be used together with `blackListedAddress` property
-useBlacklistFiles: false
+useBlacklistFiles: true
 
 # Use a custom icon 64x64 png 
 # converted using https://www.base64-image.de
-# favIcon: data:image/png;base64,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
+favIcon: data:image/webp;base64,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
 # Path to a PNG file to use as the server icon.
 # If this is set to server-icon.png then it will use the same icon as the server.
 # favIconPath: sss.ico
