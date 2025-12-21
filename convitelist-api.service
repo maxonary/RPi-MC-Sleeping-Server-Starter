@@ -1,0 +1,23 @@
+[Unit]
+Description=Convitelist API Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/convitelist/backend
+Environment="PATH=/home/pi/.nvm/versions/node/v22.21.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStartPre=/bin/bash -c 'cd /home/pi/convitelist && git pull || true'
+ExecStartPre=/bin/bash -c 'cd /home/pi/convitelist/backend && npm install && npm run build'
+ExecStart=/home/pi/.nvm/versions/node/v22.21.1/bin/npm run start
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
+
+

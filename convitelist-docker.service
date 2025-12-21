@@ -1,0 +1,23 @@
+[Unit]
+Description=Convitelist Docker Compose Service
+After=docker.service network-online.target
+Requires=docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=pi
+WorkingDirectory=/home/pi/convitelist
+# Pull latest code before starting (ignore errors if git pull fails)
+ExecStartPre=/bin/bash -c 'cd /home/pi/convitelist && git pull origin master || true'
+# Start Docker Compose services (try docker compose first, fallback to docker-compose)
+ExecStart=/bin/bash -c 'if command -v docker &> /dev/null; then docker compose -f /home/pi/convitelist/docker-compose.yml up -d || docker-compose -f /home/pi/convitelist/docker-compose.yml up -d; fi'
+# Stop Docker Compose services
+ExecStop=/bin/bash -c 'if command -v docker &> /dev/null; then docker compose -f /home/pi/convitelist/docker-compose.yml down || docker-compose -f /home/pi/convitelist/docker-compose.yml down; fi'
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,19 @@
+[Unit]
+Description=Convitelist Frontend Build and Deploy Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=pi
+WorkingDirectory=/home/pi/convitelist/frontend
+Environment="PATH=/home/pi/.nvm/versions/node/v22.21.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStart=/bin/bash -c 'cd /home/pi/convitelist/frontend && npm install && npm run build && sudo scp -r ./build/* /var/www/server.r-nold.eu/ && sudo systemctl restart nginx'
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
+
+
