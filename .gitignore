@@ -135,3 +135,15 @@ start.sh
 update.sh
 v1.*
 server-icon.png
+
+# Service files (should be in RPi-Minecraft-Server repo)
+*.service
+*.timer
+setup-docker-convitelist.sh
+github-webhook.sh
+*_SETUP.md
+*_GUIDE.md
+*_COMPLETE.md
+*_START.md
+*_EXPLANATION.md
+*_RESULTS.md
