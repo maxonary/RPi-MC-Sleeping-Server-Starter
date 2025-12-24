@@ -45,9 +45,11 @@ export class SleepingMcJava implements ISleepingServer {
       beforePing: (reponse) => {
         reponse.favicon = getFavIcon(this.settings);
       },
-      validateChannelProtocol: true,
-      errorHandler: (client, error) =>
-        console.warn("SleepingMcJava.errorHandler: ", client, error),
+      validateChannelProtocol: false, // Disable protocol validation to allow all versions to connect
+      errorHandler: (client, error) => {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        this.logger.warn(`SleepingMcJava.errorHandler: ${errorMessage}`, client);
+      },
       enforceSecureProfile: this.settings.serverOnlineMode,
       // encryption: false,
       // host: '0.0.0.0',
@@ -64,6 +66,11 @@ export class SleepingMcJava implements ISleepingServer {
             client
           )}]`
         );
+      // Also listen for errors on the client connection
+      client.on("error", (error) => {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        this.logger.warn(`[McJava] Client connection error: ${errorMessage}`);
+      });
     });
 
     this.server.on("listening", () => {
