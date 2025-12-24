@@ -27,7 +27,8 @@ serverOnlineMode: true
 
 # Use legacy "login" method
 # https://github.com/PrismarineJS/node-minecraft-protocol/issues/1279#issuecomment-1878866611
-#useLegacyLogin: false
+# Enable legacy login to fix protocol decoding issues with newer Minecraft versions
+useLegacyLogin: true
 
 # Maximum amount of players
 maxPlayers: 20
@@ -84,7 +85,9 @@ preventStop: true
 
 # Use Minecraft `whitelist.json` instead of the `whiteListedNames` property.
 # Checks both username and UUID
-useWhitelistFile: true
+# Disabled for sleeping server - allow anyone to wake the server
+# The actual Minecraft server will enforce whitelist via EasyWhitelist plugin
+useWhitelistFile: false
 
 # Prevent connections from those addresses to wake up the server
 # example ["149.102.143.151", "132.145.71.44", "45.128.232.206", "193.35.18."]
