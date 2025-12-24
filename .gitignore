@@ -129,7 +129,9 @@ minecraft_server*
 
 SetupMinecraft.sh
 fixpermissions.sh
+check-server.sh
 restart.sh
+restart-no-backup.sh
 stop.sh
 start.sh
 update.sh
@@ -147,3 +149,6 @@ github-webhook.sh
 *_START.md
 *_EXPLANATION.md
 *_RESULTS.md
+
+# Java folders
+/jre*
